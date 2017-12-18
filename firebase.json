@@ -1,16 +1,12 @@
 {
-  "hosting": {
-    "public": "front/build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/front/build/index.html"
-      }
-    ]
-  }
+	"hosting": {
+		"public": "front/build",
+		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+		"rewrites": [
+			{
+				"source": "**",
+				"destination": "/client/build/index.html"
+			}
+		]
+	}
 }
