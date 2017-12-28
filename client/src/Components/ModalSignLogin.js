@@ -8,28 +8,43 @@ class ModalSignLogin extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			modal: false
+			modal: false,
+			cardStyle: 'card:not(signIn)'
 		};
 
-		this.toggle = this.toggle.bind(this);
+		this.toggleModal = this.toggleModal.bind(this);
 	}
 
-	toggle() {
+	toggleModal() {
+		const { modal } = this.state;
 		this.setState({
-			modal: !this.state.modal
+			modal: !modal
 		});
 	}
 
-	flipCard() {}
+	flipCard() {
+		this.setState({});
+	}
 
 	reverseFlipCard() {}
 
+	flipperCard = e => {
+		e.preventDefault();
+		this.setState({ cardStyle: 's signUp)' });
+	};
+
+	flipper2 = e => {
+		e.preventDefault();
+		this.setState({ cardStyle: 'card' });
+	};
+
 	render() {
+		const { modal, cardStyle } = this.state;
 		return (
 			<NavLink onClick={this.toggleModal} href="#">
 				Sign Up/In
 				<Modal
-					isOpen={this.state.modal}
+					isOpen={modal}
 					toggle={this.toggleModal}
 					className={this.props.className}
 				>
@@ -38,63 +53,63 @@ class ModalSignLogin extends React.Component {
 							<div className="row">
 								<div className="col">
 									<div className="flip">
-										<div className={this.state.cardStyle}>
-											<div>
-												<div className="panel panel-default">
-													<form className="form-horizontal">
-														<br />
+										<div className={cardStyle}>
+											<div className="signIn panel panel-default">
+												<form className="form-horizontal">
+													<br />
 
-														<h1 className="text-center">
-															cre<span className="createorlog1">ART</span>ivity
-														</h1>
-														<br />
-														<br />
+													<h1 className="text-center">
+														cre<span className="createorlog1">
+															ART
+														</span>ivity
+													</h1>
+													<br />
+													<br />
 
-														<input
-															className="form-control"
-															placeholder="Email"
-															type="email"
-															minLength="6"
-															maxLength="20"
-															required
-														/>
-														<input
-															className="form-control"
-															placeholder="Password"
-															type="password"
-															minLength="6"
-															maxLength="20"
-															required
-														/>
-														<button
-															className="btn btn-primary btn-block"
-															type="submit"
+													<input
+														className="form-control"
+														placeholder="Email"
+														type="email"
+														minLength="6"
+														maxLength="20"
+														required
+													/>
+													<input
+														className="form-control"
+														placeholder="Password"
+														type="password"
+														minLength="6"
+														maxLength="20"
+														required
+													/>
+													<button
+														className="btn btn-primary btn-block"
+														type="submit"
+													>
+														LOG IN
+													</button>
+													<br />
+													<br />
+													<br />
+													<br />
+													<br />
+													<br />
+													<br />
+													<p className="text-center">
+														<a
+															href="#"
+															className="fliper-btn createorlog"
+															onClick={this.flipCard.bind(
+																this
+															)}
 														>
-															LOG IN
-														</button>
-														<br />
-														<br />
-														<br />
-														<br />
-														<br />
-														<br />
-														<br />
-														<p className="text-center">
-															<a
-																href="#"
-																className="fliper-btn createorlog"
-																onClick={this.flipCard.bind(
-																	this
-																)}
-															>
-																Create new
-																account?
-															</a>
-														</p>
-													</form>
-												</div>
+															Create new account?
+														</a>
+													</p>
+												</form>
 											</div>
-											<div className="face back">
+
+											<div className="signUp face back">
 												<div className="panel panel-default">
 													<form
 														className="form-horizontal"
