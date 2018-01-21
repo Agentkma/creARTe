@@ -26,12 +26,12 @@
 	font-size: large;
 }
 
-.card:not(.signIn) {
+/* .cardSup:not(.signIn) {
 	display: none;
 }
-.card:not(.signUp) {
+.cardSin:not(.signUp) {
 	display: none;
-}
+} */
 
 @keyframes App-logo-spin {
 	from {
@@ -156,6 +156,6 @@ footer {
 	border-width: 1px;
 }
 
-div.card.flipped {
+/* div.card.flipped {
 	background-color: transparent;
-}
+} */
