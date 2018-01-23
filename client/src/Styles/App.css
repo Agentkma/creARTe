@@ -7,11 +7,15 @@
 	height: 80px;
 }
 
-.App-header {
-	background-color: #222;
-	height: 150px;
+.NavBar {
+	background-color: rgba(255, 255, 255, 0.25);
+	padding: 1rem 4rem !important;
+	/* height: 150px;
 	padding: 20px;
-	color: white;
+	color: white; */
+}
+.NavText {
+	color: white !important;
 }
 
 .App-title {
@@ -21,6 +25,13 @@
 .App-intro {
 	font-size: large;
 }
+
+/* .cardSup:not(.signIn) {
+	display: none;
+}
+.cardSin:not(.signUp) {
+	display: none;
+} */
 
 @keyframes App-logo-spin {
 	from {
@@ -145,6 +156,6 @@ footer {
 	border-width: 1px;
 }
 
-div.card.flipped {
+/* div.card.flipped {
 	background-color: transparent;
-}
+} */

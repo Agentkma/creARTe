@@ -43,33 +43,29 @@ class NavBar extends Component {
 		});
 	}
 
-	flipper1 = e => {
-		e.preventDefault();
-		this.setState({ cardStyle: 'card flipped' });
-	};
-
-	flipper2 = e => {
-		e.preventDefault();
-		this.setState({ cardStyle: 'card' });
-	};
-
 	render() {
 		return (
-			<Navbar className="fixed-top mx-5" color="faded" light expand="md">
-				<NavbarBrand>
-					<Link to="/">
-						cre<span>ART</span>e
-					</Link>
+			<Navbar
+				className=" fixed-top NavBar"
+				color="faded"
+				light
+				expand="md"
+			>
+				<NavbarBrand className="navbar-brand NavText" href="/">
+					cre<span>ART</span>e
 				</NavbarBrand>
 				<NavbarToggler onClick={this.toggle} />
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className="ml-auto" navbar>
-						<NavItem>
+						<NavItem className="NavText">
 							<ModalSignLogin />
 						</NavItem>
 
 						<NavItem>
-							<NavLink href="https://kevinanderson.codes">
+							<NavLink
+								className="NavText"
+								href="https://kevinanderson.codes"
+							>
 								Contact
 							</NavLink>
 						</NavItem>
