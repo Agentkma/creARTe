@@ -7,15 +7,16 @@ import {
 	Nav,
 	NavItem,
 	NavLink,
-	Button,
 	Modal,
 	Fade
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import ModalSignLogin from './ModalSignLogin.js';
 import '../Styles/Modal.css';
+import { signOutGoogle } from '../Actions';
 
 class NavBar extends Component {
 	constructor(props) {
@@ -23,6 +24,7 @@ class NavBar extends Component {
 
 		this.toggle = this.toggle.bind(this);
 		this.toggleModal = this.toggleModal.bind(this);
+		this.renderSignOutOrSignIn = this.renderSignOutOrSignIn.bind(this);
 		this.state = {
 			isOpen: false,
 			modal: false,
@@ -34,10 +36,25 @@ class NavBar extends Component {
 			isOpen: !this.state.isOpen
 		});
 	}
+
 	toggleModal() {
 		this.setState({
 			modal: !this.state.modal
 		});
+	}
+
+	renderSignOutOrSignIn() {
+		const { user, userName, signOutGoogle } = this.props;
+		// console.log('user', user, 'userName', userName);
+		if (user === null) {
+			return <ModalSignLogin />;
+		} else {
+			return (
+				<NavLink className="NavText" onClick={signOutGoogle()} href="#">
+					{userName} Sign Out
+				</NavLink>
+			);
+		}
 	}
 
 	render() {
@@ -54,10 +71,7 @@ class NavBar extends Component {
 				<NavbarToggler onClick={this.toggle} />
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className="ml-auto" navbar>
-						<NavItem className="NavText">
-							<ModalSignLogin />
-						</NavItem>
-
+						<NavItem>{this.renderSignOutOrSignIn()}</NavItem>
 						<NavItem>
 							<NavLink
 								className="NavText"
@@ -133,4 +147,15 @@ Modal.propTypes = {
 	modalTransition: PropTypes.shape(Fade.propTypes)
 };
 
-export default NavBar;
+// pass state or state props to component via connect(mapStateToProps)
+// user comes from key name in index.js from Reducer....other vars are from this reducer state
+const mapStateToProps = ({ auth }) => {
+	const { user, userName } = auth;
+
+	return {
+		user,
+		userName
+	};
+};
+//connect action creators { } to NavBar component
+export default connect(mapStateToProps, { signOutGoogle })(NavBar);

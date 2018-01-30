@@ -1,9 +1,8 @@
-/* global prepareSquares, creArtivity, saveCanvasImage */
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
-import Script from 'react-load-script';
-import fabric from 'fabric';
+// import Script from 'react-load-script';
+// import fabric from 'fabric';
 
 import CreateArtwork from '../Scripts/CreateArtwork';
 
