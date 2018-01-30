@@ -3,8 +3,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Reducers from './Reducers';
+import firebase from 'firebase';
 
+import Reducers from './Reducers';
 import './Styles/App.css';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
@@ -17,6 +18,19 @@ import GalleryUser from './Components/GalleryUser';
 // TODO add Link to to select, draw, preview, gallery components
 
 class App extends Component {
+	componentWillMount() {
+		// Initialize Firebase
+		var config = {
+			apiKey: 'AIzaSyBz2gdsrNMTs-PMH7IW29vSsNWsFWjPpPg',
+			authDomain: 'crearte-d89e7.firebaseapp.com',
+			databaseURL: 'https://crearte-d89e7.firebaseio.com',
+			projectId: 'crearte-d89e7',
+			storageBucket: 'crearte-d89e7.appspot.com',
+			messagingSenderId: '582083078574'
+		};
+		firebase.initializeApp(config);
+	}
+
 	render() {
 		//applyMiddleware(ReduxThunk) is a store 'enhancer'
 		const store = createStore(Reducers, {}, applyMiddleware(ReduxThunk));

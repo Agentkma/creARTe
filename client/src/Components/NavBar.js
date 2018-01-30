@@ -9,9 +9,6 @@ import {
 	NavLink,
 	Button,
 	Modal,
-	ModalHeader,
-	ModalBody,
-	ModalFooter,
 	Fade
 } from 'reactstrap';
 import { Link } from 'react-router-dom';

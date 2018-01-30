@@ -4,7 +4,7 @@ import React from 'react';
 import { NavLink, Modal, ModalBody, Fade } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { signIn } from '../Actions';
+import { authUserGoogle, loginUser } from '../Actions';
 
 class ModalSignLogin extends React.Component {
 	constructor(props) {
@@ -67,6 +67,18 @@ class ModalSignLogin extends React.Component {
 						>
 							LOG IN
 						</button>
+						<a
+							className="btn btn-block"
+							href="#"
+							role="button"
+							onClick={this.props.authUserGoogle}
+						>
+							<img
+								className="img-fluid rounded"
+								src={require('../Img/btn_google_signin_dark_focus_web.png')}
+							/>
+						</a>
+
 						<br />
 						<br />
 						<br />
@@ -160,21 +172,11 @@ class ModalSignLogin extends React.Component {
 		}
 	}
 
-	// flipperCard(e) {
-	// 	e.preventDefault();
-	// 	this.setState({ cardStyle: 'cardSup:not(.signUp))' });
-	// }
-	//
-	// flipper2(e) {
-	// 	e.preventDefault();
-	// 	this.setState({ cardStyle: 'cardSin:not(.signUp) ' });
-	// }
-
 	render() {
 		const { modal } = this.state;
 		return (
 			<NavLink onClick={this.toggleModal} href="#">
-				{this.props.username}
+				{this.props.userName}
 				<Modal
 					isOpen={modal}
 					toggle={this.toggleModal}
@@ -241,12 +243,14 @@ Modal.propTypes = {
 
 // pass state or state props to component via connect(mapStateToProps)
 // user comes from key name in index.js from Reducer....other vars are from this reducer state
-const mapStateToProps = ({ user }) => {
-	const { username } = user;
+const mapStateToProps = ({ auth }) => {
+	const { userName } = auth;
 
 	return {
-		username
+		userName
 	};
 };
 //connect action creators { } to ModalSignLogin component
-export default connect(mapStateToProps, { signIn })(ModalSignLogin);
+export default connect(mapStateToProps, { authUserGoogle, loginUser })(
+	ModalSignLogin
+);
