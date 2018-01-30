@@ -25,24 +25,19 @@ import { Link } from 'react-router-dom';
 
 const items = [
 	{
-		src: require('../Img/jpone.jpg'),
+		src: require('../Img/jptwo.jpg'),
 		altText: 'Jackson Pollock 1',
 		caption: 'Jackson Pollock 1'
 	},
 	{
-		src: require('../Img/jptwo.jpg'),
+		src: require('../Img/jpthree.jpg'),
 		altText: 'Jackson Pollock 2',
 		caption: 'Jackson Pollock 2'
 	},
 	{
-		src: require('../Img/jpthree.jpeg'),
+		src: require('../Img/jpfour.jpg'),
 		altText: 'Jackson Pollock 3',
 		caption: 'Jackson Pollock 3'
-	},
-	{
-		src: require('../Img/jpfour.jpg'),
-		altText: 'Jackson Pollock 4',
-		caption: 'Jackson Pollock 4'
 	}
 ];
 
@@ -112,7 +107,7 @@ class SelectSplice extends Component {
 					altText={item.altText}
 				>
 					<CarouselCaption
-						className="text-dark"
+						className="text-white carouselCaption"
 						captionHeader={item.caption}
 					/>
 					<span
@@ -124,7 +119,7 @@ class SelectSplice extends Component {
 		});
 
 		return (
-			<div className="row  my-3">
+			<div className="row my-3">
 				<Card className="col-s-11 col-md-10 mx-auto">
 					<div className="row">
 						<div className=" col-md-6 ">
@@ -134,7 +129,6 @@ class SelectSplice extends Component {
 								</div>
 							</CardTitle>
 							<Carousel
-								className="h-75"
 								activeIndex={activeIndex}
 								next={this.next}
 								previous={this.previous}
@@ -174,12 +168,13 @@ class SelectSplice extends Component {
 								</div>
 							</CardTitle>
 							<CardImg
+								className="selectedArt"
 								top
 								width="100%"
 								height="auto"
 								src={this.state.selectedArt.src}
 							/>
-							<CardBody className="float-left ml-2">
+							<CardBody className="float-right ml-2">
 								<Link to="/draw">
 									<Button color="primary btn-lg active">
 										creART<i
@@ -229,6 +224,18 @@ Carousel.propTypes = {
 	cssModule: PropTypes.object
 };
 
+CarouselCaption.propTypes = {
+	captionHeader: PropTypes.string,
+	cssModule: PropTypes.object
+};
+
+CarouselItem.propTypes = {
+	tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+	in: PropTypes.bool,
+	cssModule: PropTypes.object,
+	children: PropTypes.array,
+	slide: PropTypes.bool
+};
 Button.propTypes = {
 	active: PropTypes.bool,
 	block: PropTypes.bool,

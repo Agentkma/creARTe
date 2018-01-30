@@ -33,6 +33,8 @@ class App extends Component {
 
 	render() {
 		//applyMiddleware(ReduxThunk) is a store 'enhancer'
+		// const composeEnhancers =
+		// 	window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 		const store = createStore(Reducers, {}, applyMiddleware(ReduxThunk));
 
 		return (
@@ -40,7 +42,7 @@ class App extends Component {
 				<Router>
 					<div className="App ">
 						<NavBar />
-						<div>
+						<main>
 							<Route exact path="/" component={Home} />
 							<Route
 								exact
@@ -54,7 +56,7 @@ class App extends Component {
 								component={PreviewCompleted}
 							/>
 							<Route path="/gallery" component={GalleryUser} />
-						</div>
+						</main>
 						<Footer />
 					</div>
 				</Router>

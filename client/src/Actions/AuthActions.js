@@ -8,8 +8,9 @@ import {
 	USER_AUTH_GOOGLE_SUCCESS,
 	SIGN_OUT_GOOGLE
 } from './types.js';
-
+//TODO looks like google login is working but I cannot get any console log's from below and access to the user
 export const authUserGoogle = () => dispatch => {
+	console.log('authUserGoogle triggered');
 	let provider = new firebase.auth.GoogleAuthProvider();
 
 	dispatch({ type: USER_LOGIN });
@@ -22,8 +23,8 @@ export const authUserGoogle = () => dispatch => {
 				.auth()
 				.getRedirectResult()
 				.then(result => {
-					console.log(result);
 					if (result.credential) {
+						console.log('sign in success');
 						// This gives you a Google Access Token. You can use it to access the Google API.
 						let token = result.credential.accessToken;
 						// ...
@@ -56,12 +57,14 @@ export const authUserGoogle = () => dispatch => {
 };
 
 export const signOutGoogle = () => dispatch => {
+	console.log('sign out Goole action');
 	dispatch({ type: SIGN_OUT_GOOGLE });
 	firebase
 		.auth()
 		.signOut()
 		.then(function() {
 			// Sign-out successful.
+			console.log('sign out Success');
 			//TODO handle route to home page
 		})
 		.catch(function(error) {
@@ -115,6 +118,7 @@ const loginUserSuccess = (dispatch, user) => {
 };
 
 const authGoogleSuccess = (dispatch, user) => {
+	console.log(user);
 	dispatch({
 		type: USER_AUTH_GOOGLE_SUCCESS,
 		payload: user

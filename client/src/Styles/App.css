@@ -47,6 +47,10 @@ body {
 	padding-top: 50px !important;
 }
 
+main {
+	padding-top: 2em;
+}
+
 .click-mask {
 	position: absolute;
 	top: 0;
@@ -159,3 +163,11 @@ footer {
 /* div.card.flipped {
 	background-color: transparent;
 } */
+
+.carouselCaption {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.selectedArt {
+	max-height: 350px;
+}

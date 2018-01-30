@@ -12,11 +12,10 @@ const INITIAL_STATE = {
 	email: '',
 	password: '',
 	user: null,
-	userName: 'Sign In',
+	userName: '',
 	error: '',
 	loading: false
 };
-//TODO ADD case for USER_AUTH_GOOGLE_SUCCESS,SIGN_OUT_GOOGLE
 
 // return: new object with all state key/vals & add new email: action.payload key/val pair
 // must return new object or Redux will not see/recognize a change
@@ -39,7 +38,13 @@ export default (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				...INITIAL_STATE,
-				user: action.payload
+				userName: action.payload
+			};
+		case SIGN_OUT_GOOGLE:
+			return {
+				...state,
+				...INITIAL_STATE,
+				user: null
 			};
 		case USER_LOGIN_FAIL:
 			return {
@@ -48,7 +53,6 @@ export default (state = INITIAL_STATE, action) => {
 				password: '',
 				loading: false
 			};
-
 		default:
 			return state;
 	}

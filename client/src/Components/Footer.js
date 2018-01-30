@@ -17,7 +17,7 @@ const Footer = props => {
 						<ul className="menu">
 							<span>Menu</span>
 							<li>
-								<a href="#">Home</a>
+								<a href="/">Home</a>
 							</li>
 
 							<li>
@@ -25,7 +25,7 @@ const Footer = props => {
 							</li>
 
 							<li>
-								<a href="#">creART</a>
+								<a href="/">creART</a>
 							</li>
 						</ul>
 					</div>

@@ -4,6 +4,8 @@ import React from 'react';
 import { NavLink, Modal, ModalBody, Fade } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+// import Loader from 'react-loader';
+
 import { authUserGoogle, loginUser } from '../Actions';
 
 class ModalSignLogin extends React.Component {
@@ -69,13 +71,14 @@ class ModalSignLogin extends React.Component {
 						</button>
 						<a
 							className="btn btn-block"
-							href="#"
+							href="/"
 							role="button"
 							onClick={this.props.authUserGoogle}
 						>
 							<img
 								className="img-fluid rounded"
 								src={require('../Img/btn_google_signin_dark_focus_web.png')}
+								alt="google logo"
 							/>
 						</a>
 
@@ -88,7 +91,7 @@ class ModalSignLogin extends React.Component {
 						<br />
 						<p className="text-center">
 							<a
-								href="#"
+								href="/"
 								className="fliper-btn createorlog"
 								onClick={this.flipCard}
 							>
@@ -105,7 +108,6 @@ class ModalSignLogin extends React.Component {
 						<form
 							className="form-horizontal"
 							data-toggle="validator"
-							role="form"
 						>
 							<br />
 							<h1 className="text-center">
@@ -158,7 +160,7 @@ class ModalSignLogin extends React.Component {
 							<br />
 							<p className="text-center">
 								<a
-									href="#"
+									href="/"
 									className="fliper-btn createorlog"
 									onClick={this.flipCard}
 								>
@@ -176,7 +178,7 @@ class ModalSignLogin extends React.Component {
 		const { modal } = this.state;
 		return (
 			<NavLink onClick={this.toggleModal} href="#">
-				{this.props.userName}
+				<span>Sign In</span>
 				<Modal
 					isOpen={modal}
 					toggle={this.toggleModal}
