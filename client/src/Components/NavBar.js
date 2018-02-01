@@ -14,7 +14,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import ModalSignLogin from './ModalSignLogin.js';
+import ModalFirebaseAuth from './ModalFirebaseAuth.js';
 import '../Styles/Modal.css';
 import { signOutGoogle } from '../Actions';
 
@@ -45,13 +45,13 @@ class NavBar extends Component {
 
 	renderSignOutOrSignIn() {
 		const { user, userName, signOutGoogle } = this.props;
-		// console.log('user', user, 'userName', userName);
+		console.log('user', user, 'userName', userName);
 		if (user === null) {
-			return <ModalSignLogin />;
+			return <ModalFirebaseAuth />;
 		} else {
 			return (
 				<NavLink className="NavText" onClick={signOutGoogle()} href="#">
-					{userName} Sign Out
+					Sign Out
 				</NavLink>
 			);
 		}

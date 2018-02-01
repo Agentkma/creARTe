@@ -8,10 +8,10 @@ import {
 	USER_AUTH_GOOGLE_SUCCESS,
 	SIGN_OUT_GOOGLE
 } from './types.js';
-//TODO looks like google login is working but I cannot get any console log's from below and access to the user
+
 export const authUserGoogle = () => dispatch => {
-	console.log('authUserGoogle triggered');
 	let provider = new firebase.auth.GoogleAuthProvider();
+	provider.addScope('profile');
 
 	dispatch({ type: USER_LOGIN });
 
@@ -19,12 +19,13 @@ export const authUserGoogle = () => dispatch => {
 		.auth()
 		.signInWithRedirect(provider)
 		.then(() => {
+			console.log('Then block after signInWithRedirect');
 			firebase
 				.auth()
 				.getRedirectResult()
 				.then(result => {
+					console.log(result);
 					if (result.credential) {
-						console.log('sign in success');
 						// This gives you a Google Access Token. You can use it to access the Google API.
 						let token = result.credential.accessToken;
 						// ...
@@ -57,14 +58,13 @@ export const authUserGoogle = () => dispatch => {
 };
 
 export const signOutGoogle = () => dispatch => {
-	console.log('sign out Goole action');
 	dispatch({ type: SIGN_OUT_GOOGLE });
 	firebase
 		.auth()
 		.signOut()
 		.then(function() {
 			// Sign-out successful.
-			console.log('sign out Success');
+			console.log('google sign out successful');
 			//TODO handle route to home page
 		})
 		.catch(function(error) {
@@ -118,11 +118,11 @@ const loginUserSuccess = (dispatch, user) => {
 };
 
 const authGoogleSuccess = (dispatch, user) => {
-	console.log(user);
 	dispatch({
 		type: USER_AUTH_GOOGLE_SUCCESS,
 		payload: user
 	});
+	console.log('auth google success');
 	//user react-native-router-flux to nav to correct screen/scene
 	// key property of scene is used as method on Actions
 	//TODO handle routing

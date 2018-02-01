@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 	email: '',
 	password: '',
 	user: null,
-	userName: '',
+	userName: 'Sign In',
 	error: '',
 	loading: false
 };
@@ -38,13 +38,14 @@ export default (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				...INITIAL_STATE,
-				userName: action.payload
+				user: action.payload
 			};
 		case SIGN_OUT_GOOGLE:
 			return {
 				...state,
 				...INITIAL_STATE,
-				user: null
+				user: null,
+				userName: 'Sign In'
 			};
 		case USER_LOGIN_FAIL:
 			return {
@@ -53,6 +54,7 @@ export default (state = INITIAL_STATE, action) => {
 				password: '',
 				loading: false
 			};
+
 		default:
 			return state;
 	}

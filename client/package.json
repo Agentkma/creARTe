@@ -8,6 +8,7 @@
 		"color": "^3.0.0",
 		"fabric": "^1.7.19",
 		"firebase": "^4.9.0",
+		"firebaseui": "^2.5.1",
 		"greuler": "^0.5.5",
 		"history": "^4.7.2",
 		"konva": "^1.7.6",
